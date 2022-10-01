@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.it.liang.hw.procurement.mysqldb.dao.BusinessDaoXml"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <insert id="insertDao" parameter="list" useGeneratedKeys="true">
+        INSERT INTO pur_person_t(
+            id,
+            name,
+            address )
+        VALUES
+        <!--<foreach collection="_parameter.get("0")" item="item" index="index" open="(" close=")" separator=",">-->
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+        (
+            #{item.id, jdbcType=NUMERIC},
+            #{item.name, jdbcType=VARCHAR},
+            #{item.address, jdbcType=VARCHAR},
+        )
+        </foreach>
+
+    </insert>
+    <select id="selectDao" >
+    </select>
+
+</AnchorPane>

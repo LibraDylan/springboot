@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>pur_fin</artifactId>
+        <groupId>com.it.liang.hw</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>purfin_web</artifactId>
+
+    <!-- 打包的时候要把其他module的内容打到一个包里，就要引入到打包的pom里 - 依赖引入开始 -->
+    <dependencies>
+        <dependency>
+            <groupId>com.it.liang.hw</groupId>
+            <artifactId>baseservice</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.it.liang.hw</groupId>
+            <artifactId>finance</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.it.liang.hw</groupId>
+            <artifactId>procurement</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+    <!-- 打包的时候要把其他module的内容打到一个包里，就要引入到打包的pom里 - 依赖引入结束 -->
+
+    <build>
+        <!-- 指定打出来的可运行包的名字 -->
+        <finalName>purfin</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 指定main class作为全局唯一入口 -->
+                    <mainClass>com.it.liang.hw.pur_fin.PurFinApplication</mainClass>
+                    <!-- 设置打出来的包放到哪个目录下， 不设置的话放在启动类所在的目录的target文件下 -->
+                    <outputDirectory>D:\code\pur_fin</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <!-- 打包路径可以放在这里也可以放在上面
+                         <configuration>
+                             <outputDirectory>D:\code\pur_fin</outputDirectory>
+                         </configuration>-->
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
